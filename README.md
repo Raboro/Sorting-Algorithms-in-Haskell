@@ -2,7 +2,7 @@
 
 ## Roadmap 
 [x] Quicksort \
-[] Insertionsort \
+[x] Insertionsort \
 [] Mergesort \
 [] Bubblesort \
 [] Heapsort \
