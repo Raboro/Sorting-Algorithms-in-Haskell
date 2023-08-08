@@ -4,7 +4,7 @@
 [x] Quicksort \
 [x] Insertionsort \
 [] Mergesort \
-[] Bubblesort \
+[x] Bubblesort \
 [] Heapsort \
 [x] Selectionsort \
 [] Radixsort \
