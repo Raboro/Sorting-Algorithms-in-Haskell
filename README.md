@@ -1,7 +1,7 @@
 # Sorting-Algorithms-in-Haskell
 
 ## Roadmap 
-[] Quicksort \
+[x] Quicksort \
 [] Insertionsort \
 [] Mergesort \
 [] Bubblesort \
