@@ -9,4 +9,4 @@
 [x] Selectionsort \
 [] Radixsort \
 [] Bucketsort \
-[] Shellsort
+[x] Shellsort

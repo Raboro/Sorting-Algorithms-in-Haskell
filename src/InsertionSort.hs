@@ -1,3 +1,5 @@
+module InsertionSort where
+
 insertionSort :: Ord a => [a] -> [a]
 insertionSort [] = []
 insertionSort (x:xs) = insertionSort' (x:xs) []
