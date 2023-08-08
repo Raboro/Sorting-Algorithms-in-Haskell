@@ -6,7 +6,7 @@
 [] Mergesort \
 [] Bubblesort \
 [] Heapsort \
-[] Selectionsort \
+[x] Selectionsort \
 [] Radixsort \
 [] Bucketsort \
 [] Shellsort
