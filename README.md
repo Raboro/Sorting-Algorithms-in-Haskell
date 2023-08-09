@@ -8,5 +8,5 @@
 [] Heapsort \
 [x] Selectionsort \
 [x] Radixsort \
-[] Bucketsort \
+[x] Bucketsort \
 [x] Shellsort
