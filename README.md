@@ -7,6 +7,6 @@
 [x] Bubblesort \
 [] Heapsort \
 [x] Selectionsort \
-[] Radixsort \
+[x] Radixsort \
 [] Bucketsort \
 [x] Shellsort
