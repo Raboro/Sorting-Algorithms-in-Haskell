@@ -5,7 +5,7 @@
 [x] Insertionsort \
 [] Mergesort \
 [x] Bubblesort \
-[] Heapsort \
+[x] Heapsort \
 [x] Selectionsort \
 [x] Radixsort \
 [x] Bucketsort \
