@@ -1,18 +1,18 @@
-mergeSort :: [Int] -> [Int]
+mergeSort :: Ord a => [a] -> [a]
 mergeSort [] = []
 mergeSort [x] = [x]
 mergeSort xs = merge (mergeSort evenList) (mergeSort oddList)
                where 
                 (evenList, oddList) = splitInEvenAndOdd xs
 
-splitInEvenAndOdd :: [Int] -> ([Int], [Int])
+splitInEvenAndOdd :: Ord a => [a] -> ([a], [a])
 splitInEvenAndOdd [] = ([], [])
 splitInEvenAndOdd [x] = ([x], [])
 splitInEvenAndOdd (x:y:rest) = (x:xs, y:ys)
                           where 
                            (xs, ys) = splitInEvenAndOdd rest
 
-merge :: [Int] -> [Int] -> [Int]
+merge :: Ord a => [a] -> [a] -> [a]
 merge xs [] = xs
 merge [] ys = ys
 merge (x:xs) (y:ys)
