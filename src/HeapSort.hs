@@ -2,7 +2,7 @@ heapSort :: Ord a => [a] -> [a]
 heapSort [] = []
 heapSort (x : xs) = heapSort' (x : xs) index
   where
-    index = (length (x : xs)) - 1
+    index = length (x : xs) - 1
 
 heapSort' :: Ord a => [a] -> Int -> [a]
 heapSort' (x : xs) index
@@ -13,7 +13,7 @@ heapSort' (x : xs) index
   where
     list = (x : xs)
     len = length list
-    first = list !! 0
+    first = head list
     second = list !! 1
     lastFree = list !! (index + 1)
     swapped = swap list first lastFree
@@ -27,12 +27,12 @@ swap (x : xs) n m
 
 heapify :: Ord a => [a] -> Int -> Int -> [a]
 heapify (x : xs) index len
-  | index == (length (x : xs)) - 1 = (x : xs)
+  | index == length (x : xs) - 1 = (x : xs)
   | otherwise = heapify (heapify' (x : xs) index len) (index + 1) (len - 1)
 
 heapify' :: Ord a => [a] -> Int -> Int -> [a]
 heapify' (x : xs) index len
-  | index == ((length (x : xs)) - 1) = (x : xs)
+  | index == (length (x : xs) - 1) = (x : xs)
   | otherwise =
       if leftExists
         then
@@ -45,12 +45,8 @@ heapify' (x : xs) index len
                         else list
                     )
                   else
-                    ( if leftElement <= rightElement
-                        then
-                          ( if rightElement > root
-                              then swap list rightElement root
-                              else list
-                          )
+                    ( if (leftElement <= rightElement) && (rightElement > root)
+                        then swap list rightElement root
                         else list
                     )
               else
@@ -60,12 +56,8 @@ heapify' (x : xs) index len
                 )
           )
         else
-          ( if rightExists
-              then
-                ( if rightElement > root
-                    then swap list rightElement root
-                    else list
-                )
+          ( if rightExists && (rightElement > root)
+              then swap list rightElement root
               else list
           )
   where
