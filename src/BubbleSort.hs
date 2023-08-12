@@ -23,7 +23,7 @@ bubbleSort''' (x : xs) p
     list = (x : xs)
     len = length list
     before = constructSubList list 0 p
-    swappedValues = [list !! (p + 1)] ++ [list !! p]
+    swappedValues = (list !! (p + 1)) : [list !! p]
     after = constructSubList list (p + 2) len
 
 constructSubList :: Ord a => [a] -> Int -> Int -> [a]
