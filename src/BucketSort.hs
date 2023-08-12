@@ -17,7 +17,7 @@ fillDigs (x : xs) rows = [fillDigs' y rows | y <- (x : xs)]
 fillDigs' :: [Int] -> Int -> [Int]
 fillDigs' (x : xs) rows
   | rows == length list = list
-  | otherwise = (zeroList (rows - length list)) ++ list
+  | otherwise = zeroList (rows - length list) ++ list
   where
     list = (x : xs)
 
@@ -34,7 +34,7 @@ rowIterate (x : xs) rows
     l = [[0]]
 
 collect :: [[Int]] -> [Int]
-collect = map read . map concat . map (map show)
+collect = map ((read . concat) . map show)
 
 sortBuckets :: [[Int]] -> Int -> [[Int]]
 sortBuckets [] _ = []
@@ -46,17 +46,17 @@ sortBuckets (x : xs) rows = numbers
 iterate' :: [[Int]] -> [[Int]] -> [[Int]] -> [[Int]] -> [[Int]] -> [[Int]] -> [[Int]] -> [[Int]] -> [[Int]] -> [[Int]] -> Int -> [[Int]] -> [[Int]]
 iterate' (a : as) (b : bs) (c : cs) (d : ds) (e : es) (f : fs) (g : gs) (h : hs) (i : is) (j : js) rows [] = compress [init (a : as), init (b : bs), init (c : cs), init (d : ds), init (e : es), init (f : fs), init (g : gs), init (h : hs), init (i : is), init (j : js)]
 iterate' (a : as) (b : bs) (c : cs) (d : ds) (e : es) (f : fs) (g : gs) (h : hs) (i : is) (j : js) rows (n : ns)
-  | n == [] = iterate' a' b' c' d' e' f' g' h' i' j' rows ns
-  | v == 0 = iterate' ([n] ++ a') b' c' d' e' f' g' h' i' j' rows ns
-  | v == 1 = iterate' a' ([n] ++ b') c' d' e' f' g' h' i' j' rows ns
-  | v == 2 = iterate' a' b' ([n] ++ c') d' e' f' g' h' i' j' rows ns
-  | v == 3 = iterate' a' b' c' ([n] ++ d') e' f' g' h' i' j' rows ns
-  | v == 4 = iterate' a' b' c' d' ([n] ++ e') f' g' h' i' j' rows ns
-  | v == 5 = iterate' a' b' c' d' e' ([n] ++ f') g' h' i' j' rows ns
-  | v == 6 = iterate' a' b' c' d' e' f' ([n] ++ g') h' i' j' rows ns
-  | v == 7 = iterate' a' b' c' d' e' f' g' ([n] ++ h') i' j' rows ns
-  | v == 8 = iterate' a' b' c' d' e' f' g' h' ([n] ++ i') j' rows ns
-  | v == 9 = iterate' a' b' c' d' e' f' g' h' i' ([n] ++ j') rows ns
+  | null n = iterate' a' b' c' d' e' f' g' h' i' j' rows ns
+  | v == 0 = iterate' (n : a') b' c' d' e' f' g' h' i' j' rows ns
+  | v == 1 = iterate' a' (n : b') c' d' e' f' g' h' i' j' rows ns
+  | v == 2 = iterate' a' b' (n : c') d' e' f' g' h' i' j' rows ns
+  | v == 3 = iterate' a' b' c' (n : d') e' f' g' h' i' j' rows ns
+  | v == 4 = iterate' a' b' c' d' (n : e') f' g' h' i' j' rows ns
+  | v == 5 = iterate' a' b' c' d' e' (n : f') g' h' i' j' rows ns
+  | v == 6 = iterate' a' b' c' d' e' f' (n : g') h' i' j' rows ns
+  | v == 7 = iterate' a' b' c' d' e' f' g' (n : h') i' j' rows ns
+  | v == 8 = iterate' a' b' c' d' e' f' g' h' (n : i') j' rows ns
+  | v == 9 = iterate' a' b' c' d' e' f' g' h' i' (n : j') rows ns
   where
     v = n !! (rows - 1)
     a' = (a : as)
@@ -73,5 +73,5 @@ iterate' (a : as) (b : bs) (c : cs) (d : ds) (e : es) (f : fs) (g : gs) (h : hs)
 compress :: [[[Int]]] -> [[Int]]
 compress [] = []
 compress (x : xs)
-  | x == [] = compress xs
+  | null x = compress xs
   | otherwise = x ++ compress xs
