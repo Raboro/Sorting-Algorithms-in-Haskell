@@ -34,6 +34,6 @@ shellSort'' (x : xs) jump pos
 swap :: Ord a => [a] -> a -> a -> [a]
 swap [] _ _ = []
 swap (x : xs) n m
-  | n == x = m : (swap xs n m)
-  | m == x = n : (swap xs n m)
-  | otherwise = x : (swap xs n m)
+  | n == x = m : swap xs n m
+  | m == x = n : swap xs n m
+  | otherwise = x : swap xs n m
